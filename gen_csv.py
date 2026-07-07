@@ -2,7 +2,7 @@ import pandas as pd
 from datetime import datetime
 
 # 读取原始数据
-df = pd.read_excel('/root/.openclaw/workspace/downloads/19f3c0d3-0ee2-835b-8000-0000788b0e32_list_20260707_v2.xlsx', header=3)
+df = pd.read_excel('/root/.openclaw/workspace/downloads/19f3d0d4-fbc2-8a7e-8000-0000a8182932_list_20260707_v3.xlsx', header=3)
 
 # 去掉空行和来源行
 df = df[df['CL1'].notna() & (df['CL1'] != 'Source: Capital IQ')].copy()

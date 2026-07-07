@@ -15,7 +15,6 @@
             font-size: 13px;
         }
 
-        /* 登录界面 */
         #login-screen {
             position: fixed;
             inset: 0;
@@ -36,194 +35,86 @@
             text-align: center;
         }
 
-        .login-box h1 {
-            font-size: 24px;
-            margin-bottom: 8px;
-            color: #1e40af;
-        }
-
-        .login-box p {
-            color: #64748b;
-            margin-bottom: 32px;
-            font-size: 14px;
-        }
-
+        .login-box h1 { font-size: 24px; margin-bottom: 8px; color: #1e40af; }
+        .login-box p { color: #64748b; margin-bottom: 32px; font-size: 14px; }
         .login-box input {
-            width: 100%;
-            padding: 14px 18px;
-            background: #f8fafc;
-            border: 1px solid #cbd5e1;
-            border-radius: 10px;
-            font-size: 16px;
-            color: #1e293b;
-            outline: none;
-            transition: border-color 0.2s;
-            margin-bottom: 16px;
+            width: 100%; padding: 14px 18px; background: #f8fafc; border: 1px solid #cbd5e1;
+            border-radius: 10px; font-size: 16px; color: #1e293b; outline: none;
+            transition: border-color 0.2s; margin-bottom: 16px;
         }
-
         .login-box input:focus { border-color: #3b82f6; }
-
         .login-box button {
-            width: 100%;
-            padding: 14px;
-            background: #3b82f6;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
+            width: 100%; padding: 14px; background: #3b82f6; color: white; border: none;
+            border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer;
         }
-
         .login-box button:hover { background: #2563eb; }
+        .login-error { color: #ef4444; font-size: 13px; margin-top: 12px; display: none; }
 
-        .login-error {
-            color: #ef4444;
-            font-size: 13px;
-            margin-top: 12px;
-            display: none;
-        }
-
-        /* 主界面 */
-        #main-content {
-            display: none;
-            max-width: 100%;
-            margin: 0 auto;
-            padding: 24px;
-        }
+        #main-content { display: none; max-width: 100%; margin: 0 auto; padding: 24px; }
 
         .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 12px;
+            display: flex; justify-content: space-between; align-items: flex-start;
+            margin-bottom: 20px; flex-wrap: wrap; gap: 12px;
         }
-
-        .header h1 {
-            font-size: 22px;
-            font-weight: 700;
-            color: #1e40af;
-        }
-
-        .header .meta {
-            color: #64748b;
-            font-size: 12px;
-            margin-top: 4px;
-        }
-
-        .header-actions {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
+        .header h1 { font-size: 22px; font-weight: 700; color: #1e40af; }
+        .header .meta { color: #64748b; font-size: 12px; margin-top: 4px; }
+        .header-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 
         .btn {
-            padding: 7px 14px;
-            border-radius: 8px;
-            border: none;
-            font-size: 12px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
+            padding: 7px 14px; border-radius: 8px; border: none; font-size: 12px;
+            font-weight: 500; cursor: pointer; transition: all 0.2s;
         }
-
-        .btn-primary {
-            background: #3b82f6;
-            color: white;
-        }
+        .btn-primary { background: #3b82f6; color: white; }
         .btn-primary:hover { background: #2563eb; }
-
         .btn-secondary {
-            background: white;
-            color: #475569;
-            border: 1px solid #cbd5e1;
+            background: white; color: #475569; border: 1px solid #cbd5e1;
         }
         .btn-secondary:hover { background: #f1f5f9; }
         .btn-secondary.active {
-            background: #3b82f6;
-            color: white;
-            border-color: #3b82f6;
+            background: #1e40af; color: white; border-color: #1e40af;
         }
 
         .search-box {
-            padding: 7px 12px;
-            background: white;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            font-size: 12px;
-            color: #1e293b;
-            outline: none;
-            width: 180px;
+            padding: 7px 12px; background: white; border: 1px solid #cbd5e1;
+            border-radius: 8px; font-size: 12px; color: #1e293b; outline: none; width: 180px;
         }
         .search-box:focus { border-color: #3b82f6; }
+        .search-box::placeholder { color: #64748b; }
 
-        /* 筛选 */
-        .filter-bar {
-            display: flex;
-            gap: 6px;
-            margin-bottom: 16px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        .filter-label {
-            font-size: 12px;
-            color: #64748b;
-            font-weight: 600;
-            margin-right: 4px;
-        }
+        .filter-bar { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; align-items: center; }
+        .filter-label { font-size: 12px; color: #64748b; font-weight: 600; margin-right: 4px; }
 
-        /* 表格 */
         .table-wrapper {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-            overflow-x: auto;
+            background: white; border-radius: 12px; overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08); overflow-x: auto;
         }
 
-        table {
-            width: max-content;
-            min-width: 100%;
-            border-collapse: collapse;
-            font-size: 12px;
-        }
+        table { width: max-content; min-width: 100%; border-collapse: collapse; font-size: 12px; }
 
-        thead {
-            background: #f8fafc;
-            position: sticky;
-            top: 0;
-            z-index: 10;
+        thead { position: sticky; top: 0; z-index: 10; }
+
+        .group-header {
+            background: #eff6ff; font-size: 11px; color: #1e40af; font-weight: 600;
+            border-bottom: 1px solid #bfdbfe;
         }
+        .group-header th {
+            padding: 6px 8px; text-align: center; border-right: 1px solid #bfdbfe;
+        }
+        .group-header th:last-child { border-right: none; }
 
         th {
-            padding: 10px 8px;
-            text-align: left;
-            font-weight: 600;
-            color: #475569;
-            cursor: pointer;
-            user-select: none;
-            white-space: nowrap;
-            transition: background 0.15s;
-            border-bottom: 1px solid #e2e8f0;
-            font-size: 11px;
+            padding: 10px 8px; text-align: left; font-weight: 600; color: #475569;
+            cursor: pointer; user-select: none; white-space: nowrap;
+            transition: background 0.15s; border-bottom: 1px solid #e2e8f0;
+            background: #f8fafc; font-size: 11px;
         }
-
         th:hover { background: #f1f5f9; color: #1e40af; }
-        th.sort-asc .sort-icon::after { content: "▲"; color: #3b82f6; }
-        th.sort-desc .sort-icon::after { content: "▼"; color: #3b82f6; }
-        th:not(.sort-asc):not(.sort-desc) .sort-icon::after { content: "⇅"; color: #94a3b8; }
-        .sort-icon { display: inline-block; margin-left: 3px; font-size: 9px; width: 10px; }
+        th .sort-icon { display: inline-block; margin-left: 3px; font-size: 9px; width: 10px; color: #94a3b8; }
+        th.sort-asc .sort-icon::after { content: "▲"; color: #1e40af; }
+        th.sort-desc .sort-icon::after { content: "▼"; color: #1e40af; }
+        th:not(.sort-asc):not(.sort-desc) .sort-icon::after { content: "⇅"; }
 
-        td {
-            padding: 8px;
-            border-bottom: 1px solid #f1f5f9;
-            white-space: nowrap;
-        }
-
+        td { padding: 8px; border-bottom: 1px solid #f1f5f9; white-space: nowrap; }
         tbody tr:hover { background: #f8fafc; }
         tbody tr:last-child td { border-bottom: none; }
 
@@ -231,11 +122,8 @@
         .center { text-align: center; }
 
         .tag {
-            display: inline-block;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 10px;
-            font-weight: 500;
+            display: inline-block; padding: 2px 6px; border-radius: 4px;
+            font-size: 10px; font-weight: 500;
         }
         .tag-a { background: #dbeafe; color: #1d4ed8; }
         .tag-hk { background: #fce7f3; color: #be185d; }
@@ -243,48 +131,27 @@
         .tag-us { background: #d1fae5; color: #047857; }
 
         .cat-tag {
-            display: inline-block;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 10px;
-            background: #f1f5f9;
-            color: #475569;
+            display: inline-block; padding: 2px 6px; border-radius: 4px;
+            font-size: 10px; background: #f1f5f9; color: #475569;
         }
 
         .chg-up { color: #dc2626; }
         .chg-down { color: #16a34a; }
 
-        .empty-state {
-            text-align: center;
-            padding: 60px 24px;
-            color: #94a3b8;
-        }
-
+        .empty-state { text-align: center; padding: 60px 24px; color: #94a3b8; }
         .empty-state h3 { font-size: 16px; color: #475569; }
 
-        .summary-bar {
-            display: flex;
-            gap: 16px;
-            margin-bottom: 16px;
-            flex-wrap: wrap;
-        }
+        .summary-bar { display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
         .summary-item {
-            background: white;
-            padding: 10px 16px;
-            border-radius: 8px;
+            background: white; padding: 10px 16px; border-radius: 8px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.08);
         }
         .summary-item .label { font-size: 11px; color: #64748b; }
         .summary-item .value { font-size: 18px; font-weight: 700; color: #1e40af; }
 
-        /* 分组表头 */
-        .group-header {
-            background: #eff6ff;
-            text-align: center;
-            font-size: 10px;
-            color: #3b82f6;
-            border-bottom: 1px solid #e2e8f0;
-        }
+        /* 竖线分隔 - 基本信息最后列 */
+        .th-border { border-right: 2px solid #bfdbfe; }
+        .td-border { border-right: 2px solid #e2e8f0; }
     </style>
 </head>
 <body>
@@ -338,14 +205,12 @@
             <table id="stock-table">
                 <thead>
                     <tr class="group-header">
-                        <th colspan="5">基本信息</th>
-                        <th colspan="2">涨幅</th>
-                        <th colspan="2">规模</th>
-                        <th colspan="4">P/E</th>
-                        <th colspan="4">EV/EBITDA</th>
-                        <th colspan="3">Rev YoY</th>
-                        <th colspan="4">EBITDA Margin</th>
-                        <th colspan="4">NP Margin</th>
+                        <th colspan="10">基本信息</th>
+                        <th colspan="4" style="border-left:2px solid #bfdbfe">P/E</th>
+                        <th colspan="4" style="border-left:2px solid #bfdbfe">EV/EBITDA</th>
+                        <th colspan="3" style="border-left:2px solid #bfdbfe">Rev YoY</th>
+                        <th colspan="4" style="border-left:2px solid #bfdbfe">EBITDA Margin</th>
+                        <th colspan="4" style="border-left:2px solid #bfdbfe">NP Margin</th>
                     </tr>
                     <tr>
                         <th onclick="sortTable(0)" class="center">市场<span class="sort-icon"></span></th>
@@ -356,23 +221,23 @@
                         <th onclick="sortTable(5)" class="number">股价<span class="sort-icon"></span></th>
                         <th onclick="sortTable(6)" class="number">25涨<span class="sort-icon"></span></th>
                         <th onclick="sortTable(7)" class="number">YTD<span class="sort-icon"></span></th>
-                        <th onclick="sortTable(8)" class="number">市值$<span class="sort-icon"></span></th>
-                        <th onclick="sortTable(9)" class="number">TEV$<span class="sort-icon"></span></th>
+                        <th onclick="sortTable(8)" class="number">MKT Cap $b<span class="sort-icon"></span></th>
+                        <th onclick="sortTable(9)" class="number th-border">TEV$b<span class="sort-icon"></span></th>
                         <th onclick="sortTable(10)" class="number">P/E 25<span class="sort-icon"></span></th>
                         <th onclick="sortTable(11)" class="number">P/E 26<span class="sort-icon"></span></th>
                         <th onclick="sortTable(12)" class="number">P/E 27<span class="sort-icon"></span></th>
-                        <th onclick="sortTable(13)" class="number">P/E 28<span class="sort-icon"></span></th>
+                        <th onclick="sortTable(13)" class="number th-border">P/E 28<span class="sort-icon"></span></th>
                         <th onclick="sortTable(14)" class="number">EV 25<span class="sort-icon"></span></th>
                         <th onclick="sortTable(15)" class="number">EV 26<span class="sort-icon"></span></th>
                         <th onclick="sortTable(16)" class="number">EV 27<span class="sort-icon"></span></th>
-                        <th onclick="sortTable(17)" class="number">EV 28<span class="sort-icon"></span></th>
+                        <th onclick="sortTable(17)" class="number th-border">EV 28<span class="sort-icon"></span></th>
                         <th onclick="sortTable(18)" class="number">Rev 26<span class="sort-icon"></span></th>
                         <th onclick="sortTable(19)" class="number">Rev 27<span class="sort-icon"></span></th>
-                        <th onclick="sortTable(20)" class="number">Rev 28<span class="sort-icon"></span></th>
+                        <th onclick="sortTable(20)" class="number th-border">Rev 28<span class="sort-icon"></span></th>
                         <th onclick="sortTable(21)" class="number">EBITDA% 25<span class="sort-icon"></span></th>
                         <th onclick="sortTable(22)" class="number">EBITDA% 26<span class="sort-icon"></span></th>
                         <th onclick="sortTable(23)" class="number">EBITDA% 27<span class="sort-icon"></span></th>
-                        <th onclick="sortTable(24)" class="number">EBITDA% 28<span class="sort-icon"></span></th>
+                        <th onclick="sortTable(24)" class="number th-border">EBITDA% 28<span class="sort-icon"></span></th>
                         <th onclick="sortTable(25)" class="number">NP% 25<span class="sort-icon"></span></th>
                         <th onclick="sortTable(26)" class="number">NP% 26<span class="sort-icon"></span></th>
                         <th onclick="sortTable(27)" class="number">NP% 27<span class="sort-icon"></span></th>
@@ -448,7 +313,7 @@
                 const response = await fetch(CONFIG.csvUrl + '?t=' + Date.now());
                 if (!response.ok) throw new Error('无法加载数据');
                 const csv = await response.text();
-                allData = parseCSV(csv);
+                allData = parseTSV(csv);
                 filterData();
                 document.getElementById('update-time').textContent = new Date().toLocaleString('zh-CN', { month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
                 updateSummary();
@@ -457,17 +322,20 @@
             }
         }
 
-        function parseCSV(csv) {
-            const lines = csv.trim().split('\n');
+        function parseTSV(tsv) {
+            const lines = tsv.trim().split('\n');
             if (lines.length < 2) return [];
 
-            const delimiter = lines[0].includes('\t') ? '\t' : ',';
-            const headers = lines[0].split(delimiter).map(h => h.trim().replace(/^["']|["']$/g, ''));
+            const headers = lines[0].split('\t').map(h => h.trim().replace(/^["']|["']$/g, ''));
 
             return lines.slice(1).map(line => {
-                const cells = line.split(delimiter).map(c => c.trim().replace(/^["']|["']$/g, ''));
-                const getNum = (i) => { const v = parseFloat(cells[i]); return isNaN(v) ? null : v; };
-                const row = {
+                const cells = line.split('\t').map(c => c.trim().replace(/^["']|["']$/g, ''));
+                const getNum = (i) => {
+                    const v = parseFloat(cells[i]);
+                    return isNaN(v) ? null : v;
+                };
+
+                return {
                     market: detectMarket(cells[2]),
                     category: cells[0] || '',
                     subcat: cells[1] || '',
@@ -499,7 +367,6 @@
                     np27: getNum(27),
                     np28: getNum(28),
                 };
-                return row;
             }).filter(r => r.name);
         }
 
@@ -584,29 +451,16 @@
                 if (pct) {
                     const cls = v > 0 ? 'chg-up' : (v < 0 ? 'chg-down' : '');
                     const sign = v > 0 ? '+' : '';
-                    return `<span class="${cls}">${sign}${(v * 100).toFixed(1)}%</span>`;
+                    return `<span class="${cls}">${sign}${Math.round(v * 100)}%</span>`;
                 }
-                if (Math.abs(v) >= 1000) return v.toFixed(0);
-                if (Math.abs(v) >= 10) return v.toFixed(1);
-                return v.toFixed(2);
+                return Math.round(v).toString();
             };
 
             const fmtPe = (v) => {
                 if (v === null || v === undefined) return '<span style="color:#94a3b8">--</span>';
-                if (v < 0) return `<span style="color:#94a3b8">(${Math.abs(v).toFixed(1)})</span>`;
-                return v.toFixed(1);
+                if (v < 0) return `<span style="color:#94a3b8">(${Math.round(Math.abs(v))})</span>`;
+                return Math.round(v).toString();
             };
-
-            const cols = ['market', 'category', 'ticker', 'name', 'currency', 'price', 'chg25', 'ytd', 'mktcap', 'tev',
-                'pe25', 'pe26', 'pe27', 'pe28', 'ev25', 'ev26', 'ev27', 'ev28',
-                'rev26', 'rev27', 'rev28', 'ebitda25', 'ebitda26', 'ebitda27', 'ebitda28',
-                'np25', 'np26', 'np27', 'np28'];
-
-            const isPct = { chg25: true, ytd: true, rev26: true, rev27: true, rev28: true,
-                ebitda25: true, ebitda26: true, ebitda27: true, ebitda28: true,
-                np25: true, np26: true, np27: true, np28: true };
-
-            const isPe = { pe25: true, pe26: true, pe27: true, pe28: true, ev25: true, ev26: true, ev27: true, ev28: true };
 
             tbody.innerHTML = data.map(row => {
                 const tag = marketClass[row.market] || 'tag-us';
@@ -620,22 +474,22 @@
                     <td class="number">${fmt(row.chg25, true)}</td>
                     <td class="number">${fmt(row.ytd, true)}</td>
                     <td class="number">${fmt(row.mktcap)}</td>
-                    <td class="number">${fmt(row.tev)}</td>
+                    <td class="number td-border">${fmt(row.tev)}</td>
                     <td class="number">${fmtPe(row.pe25)}</td>
                     <td class="number">${fmtPe(row.pe26)}</td>
                     <td class="number">${fmtPe(row.pe27)}</td>
-                    <td class="number">${fmtPe(row.pe28)}</td>
+                    <td class="number td-border">${fmtPe(row.pe28)}</td>
                     <td class="number">${fmtPe(row.ev25)}</td>
                     <td class="number">${fmtPe(row.ev26)}</td>
                     <td class="number">${fmtPe(row.ev27)}</td>
-                    <td class="number">${fmtPe(row.ev28)}</td>
+                    <td class="number td-border">${fmtPe(row.ev28)}</td>
                     <td class="number">${fmt(row.rev26, true)}</td>
                     <td class="number">${fmt(row.rev27, true)}</td>
-                    <td class="number">${fmt(row.rev28, true)}</td>
+                    <td class="number td-border">${fmt(row.rev28, true)}</td>
                     <td class="number">${fmt(row.ebitda25, true)}</td>
                     <td class="number">${fmt(row.ebitda26, true)}</td>
                     <td class="number">${fmt(row.ebitda27, true)}</td>
-                    <td class="number">${fmt(row.ebitda28, true)}</td>
+                    <td class="number td-border">${fmt(row.ebitda28, true)}</td>
                     <td class="number">${fmt(row.np25, true)}</td>
                     <td class="number">${fmt(row.np26, true)}</td>
                     <td class="number">${fmt(row.np27, true)}</td>

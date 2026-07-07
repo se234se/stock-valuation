@@ -6,9 +6,14 @@ df = pd.read_excel('downloads/19f3ac99-9152-81e2-8000-0000a8dd94a3_list_20260707
 # 去掉空行和来源行
 df = df[df['CL1'].notna() & (df['CL1'] != 'Source: Capital IQ')].copy()
 
-# 排除的列索引 (A=0, B=1, ...)
-exclude_cols = [9, 11, 13, 14, 15, 20, 21, 26, 27, 28, 29, 33, 34, 35, 40, 41, 42, 47, 48, 49, 50]
-keep_cols = [i for i in range(len(df.columns)) if i not in exclude_cols and i != 0]
+# 排除列：J/L/N/O/P/U/V/AA/AB/AC/AD/AH/AI/AJ/AO/AP/AQ/AV/AW/AX/AY
+# A=0, B=1, C=2, D=3, E=4, F=5, G=6, H=7, I=8, J=9, K=10, L=11, M=12, N=13, O=14, P=15
+# Q=16, R=17, S=18, T=19, U=20, V=21, W=22, X=23, Y=24, Z=25
+# AA=26, AB=27, AC=28, AD=29, AE=30, AF=31, AG=32, AH=33, AI=34, AJ=35
+# AK=36, AL=37, AM=38, AN=39, AO=40, AP=41, AQ=42, AR=43, AS=44, AT=45
+# AU=46, AV=47, AW=48, AX=49, AY=50
+exclude_cols = [0, 9, 11, 13, 14, 15, 20, 21, 26, 27, 28, 29, 33, 34, 35, 40, 41, 42, 47, 48, 49, 50]
+keep_cols = [i for i in range(len(df.columns)) if i not in exclude_cols]
 
 # 提取保留列
 new_df = df.iloc[:, keep_cols].copy()
@@ -23,7 +28,7 @@ rename_map = {
     'Price': '股价',
     "'25 chg": '25涨幅',
     'YTD': 'YTD',
-    'USD\n(bn)': '市值USD',
+    'USD\n(bn)': 'MKT_Cap_USD',
     'USD\n(bn).1': 'TEV_USD',
     'CY25': 'PE_25',
     'CY26': 'PE_26',
@@ -47,8 +52,8 @@ rename_map = {
 }
 new_df = new_df.rename(columns=rename_map)
 
-# 保存CSV
-new_df.to_csv('stock-valuation/data.csv', index=False, encoding='utf-8-sig')
+# 保存为制表符分隔TSV（避免逗号问题）
+new_df.to_csv('stock-valuation/data.csv', index=False, sep='\t', encoding='utf-8-sig')
 
-print('CSV saved. Rows:', len(new_df))
+print('TSV saved. Rows:', len(new_df))
 print('Columns:', new_df.columns.tolist())

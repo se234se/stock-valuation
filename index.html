@@ -193,7 +193,6 @@
             </div>
             <div class="header-actions">
                 <input type="text" class="search-box" id="search-input" placeholder="搜索..." oninput="filterData()">
-                <button class="btn btn-primary mobile-toggle" onclick="toggleMobileColumns()" id="mobile-toggle-btn">全部列</button>
                 <button class="btn btn-primary" onclick="loadData()">刷新</button>
             </div>
         </div>
@@ -221,16 +220,20 @@
             <button class="btn btn-secondary" data-filter="DC" onclick="setCatFilter('DC', this)">DC</button>
         </div>
 
+        <div class="filter-bar mobile-toggle" style="margin-bottom: 8px;">
+            <button class="btn btn-primary" onclick="toggleMobileColumns()" id="mobile-toggle-btn">全部列</button>
+        </div>
+
         <div class="table-wrapper">
             <table id="stock-table">
                 <thead>
                     <tr class="group-header">
-                        <th colspan="10">Stock</th>
-                        <th colspan="4">P/E</th>
-                        <th colspan="4">EV/EBITDA</th>
-                        <th colspan="3">Rev YoY</th>
-                        <th colspan="4">EBITDA Margin</th>
-                        <th colspan="4">NP Margin</th>
+                        <th colspan="10" class="mobile-hidden">Stock</th>
+                        <th colspan="4" class="mobile-hidden">P/E</th>
+                        <th colspan="4" class="mobile-hidden">EV/EBITDA</th>
+                        <th colspan="3" class="mobile-hidden">Rev YoY</th>
+                        <th colspan="4" class="mobile-hidden">EBITDA Margin</th>
+                        <th colspan="4" class="mobile-hidden">NP Margin</th>
                     </tr>
                     <tr>
                         <th onclick="sortTable(0)" class="center sticky-left" data-sticky-index="0">市场<span class="sort-icon"></span></th>
@@ -239,26 +242,26 @@
                         <th onclick="sortTable(3)" class="sticky-left" data-sticky-index="3">名称<span class="sort-icon"></span></th>
                         <th onclick="sortTable(4)" class="center mobile-hidden">币<span class="sort-icon"></span></th>
                         <th onclick="sortTable(5)" class="number">股价<span class="sort-icon"></span></th>
-                        <th onclick="sortTable(6)" class="number">25涨<span class="sort-icon"></span></th>
+                        <th onclick="sortTable(6)" class="number mobile-hidden">25涨<span class="sort-icon"></span></th>
                         <th onclick="sortTable(7)" class="number">YTD<span class="sort-icon"></span></th>
-                        <th onclick="sortTable(8)" class="number mobile-hidden">MKT Cap $b<span class="sort-icon"></span></th>
+                        <th onclick="sortTable(8)" class="number">MKT Cap $b<span class="sort-icon"></span></th>
                         <th onclick="sortTable(9)" class="number th-group-end mobile-hidden">TEV $b<span class="sort-icon"></span></th>
-                        <th onclick="sortTable(10)" class="number">25<span class="sort-icon"></span></th>
-                        <th onclick="sortTable(11)" class="number mobile-hidden">26<span class="sort-icon"></span></th>
+                        <th onclick="sortTable(10)" class="number mobile-hidden">25<span class="sort-icon"></span></th>
+                        <th onclick="sortTable(11)" class="number">26<span class="sort-icon"></span></th>
                         <th onclick="sortTable(12)" class="number mobile-hidden">27<span class="sort-icon"></span></th>
                         <th onclick="sortTable(13)" class="number th-group-end mobile-hidden">28<span class="sort-icon"></span></th>
-                        <th onclick="sortTable(14)" class="number">25<span class="sort-icon"></span></th>
-                        <th onclick="sortTable(15)" class="number mobile-hidden">26<span class="sort-icon"></span></th>
+                        <th onclick="sortTable(14)" class="number mobile-hidden">25<span class="sort-icon"></span></th>
+                        <th onclick="sortTable(15)" class="number">26<span class="sort-icon"></span></th>
                         <th onclick="sortTable(16)" class="number mobile-hidden">27<span class="sort-icon"></span></th>
                         <th onclick="sortTable(17)" class="number th-group-end mobile-hidden">28<span class="sort-icon"></span></th>
-                        <th onclick="sortTable(18)" class="number">26<span class="sort-icon"></span></th>
+                        <th onclick="sortTable(18)" class="number mobile-hidden">26<span class="sort-icon"></span></th>
                         <th onclick="sortTable(19)" class="number mobile-hidden">27<span class="sort-icon"></span></th>
                         <th onclick="sortTable(20)" class="number th-group-end mobile-hidden">28<span class="sort-icon"></span></th>
-                        <th onclick="sortTable(21)" class="number">25<span class="sort-icon"></span></th>
+                        <th onclick="sortTable(21)" class="number mobile-hidden">25<span class="sort-icon"></span></th>
                         <th onclick="sortTable(22)" class="number mobile-hidden">26<span class="sort-icon"></span></th>
                         <th onclick="sortTable(23)" class="number mobile-hidden">27<span class="sort-icon"></span></th>
                         <th onclick="sortTable(24)" class="number th-group-end mobile-hidden">28<span class="sort-icon"></span></th>
-                        <th onclick="sortTable(25)" class="number">25<span class="sort-icon"></span></th>
+                        <th onclick="sortTable(25)" class="number mobile-hidden">25<span class="sort-icon"></span></th>
                         <th onclick="sortTable(26)" class="number mobile-hidden">26<span class="sort-icon"></span></th>
                         <th onclick="sortTable(27)" class="number mobile-hidden">27<span class="sort-icon"></span></th>
                         <th onclick="sortTable(28)" class="number mobile-hidden">28<span class="sort-icon"></span></th>
@@ -550,26 +553,26 @@
                     <td class="sticky-left"><strong>${row.name}</strong></td>
                     <td class="center mobile-hidden">${row.currency}</td>
                     <td class="number">${fmt(row.price)}</td>
-                    <td class="number">${fmt(row.chg25, true)}</td>
+                    <td class="number mobile-hidden">${fmt(row.chg25, true)}</td>
                     <td class="number">${fmt(row.ytd, true)}</td>
-                    <td class="number mobile-hidden">${fmt(row.mktcap)}</td>
+                    <td class="number">${fmt(row.mktcap)}</td>
                     <td class="number td-group-end mobile-hidden">${fmt(row.tev)}</td>
-                    <td class="number">${fmtNum(row.pe25)}</td>
-                    <td class="number mobile-hidden">${fmtNum(row.pe26)}</td>
+                    <td class="number mobile-hidden">${fmtNum(row.pe25)}</td>
+                    <td class="number">${fmtNum(row.pe26)}</td>
                     <td class="number mobile-hidden">${fmtNum(row.pe27)}</td>
                     <td class="number td-group-end mobile-hidden">${fmtNum(row.pe28)}</td>
-                    <td class="number">${fmtNum(row.ev25)}</td>
-                    <td class="number mobile-hidden">${fmtNum(row.ev26)}</td>
+                    <td class="number mobile-hidden">${fmtNum(row.ev25)}</td>
+                    <td class="number">${fmtNum(row.ev26)}</td>
                     <td class="number mobile-hidden">${fmtNum(row.ev27)}</td>
                     <td class="number td-group-end mobile-hidden">${fmtNum(row.ev28)}</td>
-                    <td class="number">${fmtPct(row.rev26)}</td>
+                    <td class="number mobile-hidden">${fmtPct(row.rev26)}</td>
                     <td class="number mobile-hidden">${fmtPct(row.rev27)}</td>
                     <td class="number td-group-end mobile-hidden">${fmtPct(row.rev28)}</td>
-                    <td class="number">${fmtPct(row.ebitda25)}</td>
+                    <td class="number mobile-hidden">${fmtPct(row.ebitda25)}</td>
                     <td class="number mobile-hidden">${fmtPct(row.ebitda26)}</td>
                     <td class="number mobile-hidden">${fmtPct(row.ebitda27)}</td>
                     <td class="number td-group-end mobile-hidden">${fmtPct(row.ebitda28)}</td>
-                    <td class="number">${fmtPct(row.np25)}</td>
+                    <td class="number mobile-hidden">${fmtPct(row.np25)}</td>
                     <td class="number mobile-hidden">${fmtPct(row.np26)}</td>
                     <td class="number mobile-hidden">${fmtPct(row.np27)}</td>
                     <td class="number mobile-hidden">${fmtPct(row.np28)}</td>

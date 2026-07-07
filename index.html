@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>股票估值对比</title>
+    <title>AI Supply Chain Comp</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -183,7 +183,7 @@
 <body>
     <div id="login-screen">
         <div class="login-box">
-            <h1>股票估值对比</h1>
+            <h1>AI Supply Chain Comp</h1>
             <p>数据已加密，请输入访问密码</p>
             <input type="password" id="password-input" placeholder="密码" onkeydown="if(event.key==='Enter')checkPassword()">
             <button onclick="checkPassword()">进入</button>
@@ -227,7 +227,7 @@
         </div>
 
         <div class="filter-bar mobile-toggle" style="margin-bottom: 8px;">
-            <button class="btn btn-primary" onclick="toggleMobileColumns()" id="mobile-toggle-btn">全部列</button>
+            <button class="btn btn-primary" onclick="toggleMobileColumns()" id="mobile-toggle-btn">展开为全部列</button>
         </div>
 
         <div class="table-wrapper">
@@ -304,7 +304,7 @@
                 btn.textContent = '精简';
             } else {
                 wrapper.classList.remove('mobile-force-show');
-                btn.textContent = '全部列';
+                btn.textContent = '展开为全部列';
             }
         }
 

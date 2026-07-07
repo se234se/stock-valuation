@@ -102,6 +102,7 @@
             border-right: 1px solid #e2e8f0;
         }
         th.th-group-end { border-right: 2px solid #bfdbfe; }
+        .td-group-end { border-right: 2px solid #bfdbfe; }
         th:last-child { border-right: none; }
         th:hover { background: #f1f5f9; color: #1e40af; }
         th .sort-icon { display: inline-block; margin-left: 3px; font-size: 9px; width: 10px; color: #94a3b8; }
@@ -518,22 +519,22 @@
                     <td class="number">${fmt(row.chg25, true)}</td>
                     <td class="number">${fmt(row.ytd, true)}</td>
                     <td class="number">${fmt(row.mktcap)}</td>
-                    <td class="number">${fmt(row.tev)}</td>
+                    <td class="number td-group-end">${fmt(row.tev)}</td>
                     <td class="number">${fmtNum(row.pe25)}</td>
                     <td class="number">${fmtNum(row.pe26)}</td>
                     <td class="number">${fmtNum(row.pe27)}</td>
-                    <td class="number">${fmtNum(row.pe28)}</td>
+                    <td class="number td-group-end">${fmtNum(row.pe28)}</td>
                     <td class="number">${fmtNum(row.ev25)}</td>
                     <td class="number">${fmtNum(row.ev26)}</td>
                     <td class="number">${fmtNum(row.ev27)}</td>
-                    <td class="number">${fmtNum(row.ev28)}</td>
+                    <td class="number td-group-end">${fmtNum(row.ev28)}</td>
                     <td class="number">${fmtPct(row.rev26)}</td>
                     <td class="number">${fmtPct(row.rev27)}</td>
-                    <td class="number">${fmtPct(row.rev28)}</td>
+                    <td class="number td-group-end">${fmtPct(row.rev28)}</td>
                     <td class="number">${fmtPct(row.ebitda25)}</td>
                     <td class="number">${fmtPct(row.ebitda26)}</td>
                     <td class="number">${fmtPct(row.ebitda27)}</td>
-                    <td class="number">${fmtPct(row.ebitda28)}</td>
+                    <td class="number td-group-end">${fmtPct(row.ebitda28)}</td>
                     <td class="number">${fmtPct(row.np25)}</td>
                     <td class="number">${fmtPct(row.np26)}</td>
                     <td class="number">${fmtPct(row.np27)}</td>

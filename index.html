@@ -75,25 +75,33 @@
         .filter-label { font-size: 12px; color: #64748b; font-weight: 600; margin-right: 4px; }
 
         .table-wrapper {
-            background: white; border-radius: 12px; overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08); overflow-x: auto;
+            background: white; border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            overflow: auto;
+            max-height: calc(100vh - 260px);
         }
         table { width: max-content; min-width: 100%; border-collapse: collapse; font-size: 12px; }
-        thead { position: sticky; top: 0; z-index: 10; }
+
+        thead { position: sticky; top: 0; z-index: 100; }
 
         .group-header {
             background: #eff6ff; font-size: 11px; color: #1e40af; font-weight: 600;
             border-bottom: 1px solid #bfdbfe;
         }
-        .group-header th { padding: 6px 8px; text-align: center; }
+        .group-header th {
+            padding: 6px 8px; text-align: center;
+            border-right: 2px solid #bfdbfe;
+        }
+        .group-header th:last-child { border-right: none; }
 
         th {
             padding: 10px 8px; text-align: left; font-weight: 600; color: #475569;
             cursor: pointer; user-select: none; white-space: nowrap;
             background: #f8fafc; font-size: 11px;
             border-bottom: 1px solid #e2e8f0;
-            border-right: 2px solid #e2e8f0;
+            border-right: 1px solid #e2e8f0;
         }
+        th.th-group-end { border-right: 2px solid #bfdbfe; }
         th:last-child { border-right: none; }
         th:hover { background: #f1f5f9; color: #1e40af; }
         th .sort-icon { display: inline-block; margin-left: 3px; font-size: 9px; width: 10px; color: #94a3b8; }
@@ -104,6 +112,22 @@
         td { padding: 8px; border-bottom: 1px solid #f1f5f9; white-space: nowrap; }
         tbody tr:hover { background: #f8fafc; }
         tbody tr:last-child td { border-bottom: none; }
+
+        /* 左侧固定列 */
+        .sticky-left {
+            position: sticky;
+            z-index: 50;
+        }
+        thead .sticky-left {
+            z-index: 150;
+            background: #f8fafc;
+        }
+        tbody .sticky-left {
+            background: white;
+        }
+        tbody tr:hover .sticky-left {
+            background: #f8fafc;
+        }
 
         .number { font-variant-numeric: tabular-nums; text-align: right; }
         .center { text-align: center; }
@@ -127,8 +151,6 @@
         .summary-item { background: white; padding: 10px 16px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
         .summary-item .label { font-size: 11px; color: #64748b; }
         .summary-item .value { font-size: 18px; font-weight: 700; color: #1e40af; }
-
-        .th-group-end { border-right: 2px solid #bfdbfe; }
     </style>
 </head>
 <body>
@@ -182,7 +204,7 @@
             <table id="stock-table">
                 <thead>
                     <tr class="group-header">
-                        <th colspan="10">基本信息</th>
+                        <th colspan="10">Stock</th>
                         <th colspan="4">P/E</th>
                         <th colspan="4">EV/EBITDA</th>
                         <th colspan="3">Rev YoY</th>
@@ -190,10 +212,10 @@
                         <th colspan="4">NP Margin</th>
                     </tr>
                     <tr>
-                        <th onclick="sortTable(0)" class="center">市场<span class="sort-icon"></span></th>
-                        <th onclick="sortTable(1)">分类<span class="sort-icon"></span></th>
-                        <th onclick="sortTable(2)">代码<span class="sort-icon"></span></th>
-                        <th onclick="sortTable(3)">名称<span class="sort-icon"></span></th>
+                        <th onclick="sortTable(0)" class="center sticky-left" data-sticky-index="0">市场<span class="sort-icon"></span></th>
+                        <th onclick="sortTable(1)" class="sticky-left" data-sticky-index="1">分类<span class="sort-icon"></span></th>
+                        <th onclick="sortTable(2)" class="sticky-left" data-sticky-index="2">代码<span class="sort-icon"></span></th>
+                        <th onclick="sortTable(3)" class="sticky-left" data-sticky-index="3">名称<span class="sort-icon"></span></th>
                         <th onclick="sortTable(4)" class="center">币<span class="sort-icon"></span></th>
                         <th onclick="sortTable(5)" class="number">股价<span class="sort-icon"></span></th>
                         <th onclick="sortTable(6)" class="number">25涨<span class="sort-icon"></span></th>
@@ -288,7 +310,6 @@
             tbody.innerHTML = '<tr><td colspan="29" class="empty-state"><h3>加载中...</h3></td></tr>';
 
             try {
-                // 读取更新时间
                 const timeResponse = await fetch(CONFIG.timeUrl + '?t=' + Date.now());
                 if (timeResponse.ok) {
                     const updateTime = await timeResponse.text();
@@ -423,6 +444,36 @@
             });
         }
 
+        function applyStickyColumns() {
+            const table = document.getElementById('stock-table');
+            const headerCells = table.querySelectorAll('thead tr:last-child th');
+            const rows = table.querySelectorAll('tbody tr');
+            const groupHeaderCells = table.querySelectorAll('.group-header th');
+
+            // 计算前4列的累积宽度
+            let left = 0;
+            for (let i = 0; i < 4; i++) {
+                const th = headerCells[i];
+                if (!th) continue;
+                
+                th.style.left = left + 'px';
+                
+                rows.forEach(row => {
+                    const td = row.cells[i];
+                    if (td) {
+                        td.classList.add('sticky-left');
+                        td.style.left = left + 'px';
+                    }
+                });
+                
+                left += th.getBoundingClientRect().width;
+            }
+
+            // group-header 第一个单元格（Stock）也需要部分固定效果
+            // 由于它是 colspan=10，我们不能部分固定它
+            // 但我们可以创建一个视觉上的覆盖层，或者让用户接受 group-header 会滚动
+        }
+
         function renderTable(data) {
             const tbody = document.getElementById('table-body');
             if (data.length === 0) {
@@ -458,10 +509,10 @@
             tbody.innerHTML = data.map(row => {
                 const tag = marketClass[row.market] || 'tag-us';
                 return `<tr>
-                    <td class="center"><span class="tag ${tag}">${row.market}</span></td>
-                    <td><span class="cat-tag">${row.category}</span></td>
-                    <td>${row.ticker}</td>
-                    <td><strong>${row.name}</strong></td>
+                    <td class="center sticky-left"><span class="tag ${tag}">${row.market}</span></td>
+                    <td class="sticky-left"><span class="cat-tag">${row.category}</span></td>
+                    <td class="sticky-left">${row.ticker}</td>
+                    <td class="sticky-left"><strong>${row.name}</strong></td>
                     <td class="center">${row.currency}</td>
                     <td class="number">${fmt(row.price)}</td>
                     <td class="number">${fmt(row.chg25, true)}</td>
@@ -489,6 +540,11 @@
                     <td class="number">${fmtPct(row.np28)}</td>
                 </tr>`;
             }).join('');
+
+            // 表格渲染后计算并应用 sticky 位置
+            requestAnimationFrame(() => {
+                applyStickyColumns();
+            });
         }
 
         function updateSummary() {
@@ -513,6 +569,17 @@
         document.addEventListener('DOMContentLoaded', () => {
             const input = document.getElementById('password-input');
             if (input) input.focus();
+        });
+
+        // 窗口大小改变时重新计算 sticky 位置
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                if (filteredData.length > 0) {
+                    applyStickyColumns();
+                }
+            }, 200);
         });
     </script>
 </body>

@@ -105,6 +105,8 @@
         .td-group-end { border-right: 2px solid #bfdbfe; }
 
         .mobile-toggle { display: none; }
+        .dt-text { display: inline; }
+        .mb-text { display: none; }
 
         @media (max-width: 768px) {
             #main-content { padding: 12px; }
@@ -121,7 +123,11 @@
             th, td { padding: 5px 4px; }
             .mobile-hidden { display: none; }
             .mobile-toggle { display: inline-block; }
+            .dt-text { display: none; }
+            .mb-text { display: inline; }
             .mobile-force-show .mobile-hidden { display: table-cell; }
+            .name-col { max-width: 70px; white-space: normal; font-size: 9px; padding: 3px 2px; line-height: 1.3; }
+            th.name-col { font-size: 9px; padding: 4px 2px; }
         }
         th:last-child { border-right: none; }
         th:hover { background: #f1f5f9; color: #1e40af; }
@@ -236,22 +242,22 @@
                         <th colspan="4" class="mobile-hidden">NP Margin</th>
                     </tr>
                     <tr>
-                        <th onclick="sortTable(0)" class="center sticky-left" data-sticky-index="0">市场<span class="sort-icon"></span></th>
-                        <th onclick="sortTable(1)" class="sticky-left" data-sticky-index="1">分类<span class="sort-icon"></span></th>
-                        <th onclick="sortTable(2)" class="sticky-left" data-sticky-index="2">代码<span class="sort-icon"></span></th>
+                        <th onclick="sortTable(0)" class="center sticky-left mobile-hidden" data-sticky-index="0">市场<span class="sort-icon"></span></th>
+                        <th onclick="sortTable(1)" class="sticky-left mobile-hidden" data-sticky-index="1">分类<span class="sort-icon"></span></th>
+                        <th onclick="sortTable(2)" class="sticky-left mobile-hidden" data-sticky-index="2">代码<span class="sort-icon"></span></th>
                         <th onclick="sortTable(3)" class="sticky-left" data-sticky-index="3">名称<span class="sort-icon"></span></th>
                         <th onclick="sortTable(4)" class="center mobile-hidden">币<span class="sort-icon"></span></th>
                         <th onclick="sortTable(5)" class="number">股价<span class="sort-icon"></span></th>
                         <th onclick="sortTable(6)" class="number mobile-hidden">25涨<span class="sort-icon"></span></th>
                         <th onclick="sortTable(7)" class="number">YTD<span class="sort-icon"></span></th>
-                        <th onclick="sortTable(8)" class="number">MKT Cap $b<span class="sort-icon"></span></th>
+                        <th onclick="sortTable(8)" class="number mobile-hidden">MKT Cap $b<span class="sort-icon"></span></th>
                         <th onclick="sortTable(9)" class="number th-group-end mobile-hidden">TEV $b<span class="sort-icon"></span></th>
                         <th onclick="sortTable(10)" class="number mobile-hidden">25<span class="sort-icon"></span></th>
-                        <th onclick="sortTable(11)" class="number">26<span class="sort-icon"></span></th>
+                        <th onclick="sortTable(11)" class="number"><span class="dt-text">26</span><span class="mb-text">P/E 26</span><span class="sort-icon"></span></th>
                         <th onclick="sortTable(12)" class="number mobile-hidden">27<span class="sort-icon"></span></th>
                         <th onclick="sortTable(13)" class="number th-group-end mobile-hidden">28<span class="sort-icon"></span></th>
                         <th onclick="sortTable(14)" class="number mobile-hidden">25<span class="sort-icon"></span></th>
-                        <th onclick="sortTable(15)" class="number">26<span class="sort-icon"></span></th>
+                        <th onclick="sortTable(15)" class="number"><span class="dt-text">26</span><span class="mb-text">EV/EBITDA 26</span><span class="sort-icon"></span></th>
                         <th onclick="sortTable(16)" class="number mobile-hidden">27<span class="sort-icon"></span></th>
                         <th onclick="sortTable(17)" class="number th-group-end mobile-hidden">28<span class="sort-icon"></span></th>
                         <th onclick="sortTable(18)" class="number mobile-hidden">26<span class="sort-icon"></span></th>
@@ -547,15 +553,15 @@
             tbody.innerHTML = data.map(row => {
                 const tag = marketClass[row.market] || 'tag-us';
                 return `<tr>
-                    <td class="center sticky-left"><span class="tag ${tag}">${row.market}</span></td>
-                    <td class="sticky-left"><span class="cat-tag">${row.category}</span></td>
-                    <td class="sticky-left">${row.ticker}</td>
-                    <td class="sticky-left"><strong>${row.name}</strong></td>
+                    <td class="center sticky-left mobile-hidden"><span class="tag ${tag}">${row.market}</span></td>
+                    <td class="sticky-left mobile-hidden"><span class="cat-tag">${row.category}</span></td>
+                    <td class="sticky-left mobile-hidden">${row.ticker}</td>
+                    <td class="sticky-left name-col"><strong>${row.name}</strong></td>
                     <td class="center mobile-hidden">${row.currency}</td>
                     <td class="number">${fmt(row.price)}</td>
                     <td class="number mobile-hidden">${fmt(row.chg25, true)}</td>
                     <td class="number">${fmt(row.ytd, true)}</td>
-                    <td class="number">${fmt(row.mktcap)}</td>
+                    <td class="number mobile-hidden">${fmt(row.mktcap)}</td>
                     <td class="number td-group-end mobile-hidden">${fmt(row.tev)}</td>
                     <td class="number mobile-hidden">${fmtNum(row.pe25)}</td>
                     <td class="number">${fmtNum(row.pe26)}</td>
